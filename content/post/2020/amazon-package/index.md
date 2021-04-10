@@ -1,0 +1,56 @@
+---
+title: "Improving Amazon Package Tracking with Tasker"
+author: "FuzzyMistborn"
+date: 2020-09-06T01:10:09Z
+slug: improving-amazon-package-tracking-with-tasker
+categories:
+  - "Smart Home"
+tags:
+  - HomeAssistant
+  - NodeRed
+  - Amazon
+  - Package
+draft: false
+---
+
+First off, I am a HUGE fan of the [Mail and Packages](https://github.com/moralmunky/Home-Assistant-Mail-And-Packages/) custom component.  Major hat tip to @moralmonkey and @firstof9 for all their work getting this running and improving it constantly.  Especially @firstof9.  Whenever I find a bug/something isn't working right he's incredibly responsive and works hard to fix it.  I find it incredibly handy to know when packages and mail might arrive that day so it's nice to have HomeAssistant track it for me.
+
+I won't go into details of how to set up the component in general since I think the process is fairly well explained [in the wiki](https://github.com/moralmunky/Home-Assistant-Mail-And-Packages/wiki).  The short version of how it works is that it periodically scans your email inbox for email messages from the various carriers, looking for specific messages about packages being out for delivery.  You can then fire off various automations (such as a notification) when the sensor values change.
+
+## Amazon Packages
+
+For a long time, I was content with just having USPS, UPS and FedEx package tracking.  Since all three rely on email notifications for package updates, it worked fine for me.  However, recently (last month or so) Amazon has expanded their own delivery services to my area.  Amazon unfortunately handles their delivery messages differently.  They only send out an app notification for "out for delivery" and "almost there" updates, followed by a "your package was delivered" email along with a photo of the package on your doorstep/wheverever the Amazon driver dropped it.  The latest beta version of the component is able to process the delivered message but can only do a "best guess" for when a package is out for delivery based on the initial "your package will arrive on x date" in the shipping email.
+
+I came up with a workaround using one of my favorite Android apps, [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm), and a plugin app for Tasker, [AutoNotification](https://play.google.com/store/apps/details?id=com.joaomgcd.autonotification).  Both apps are paid (but IMO well worth the price) and this won't work on iOS (sorry).  My setup uses NodeRed and the [Node-Red custom component](https://github.com/zachowj/hass-node-red).  There's probably a way to achieve this with HASS automations but I'm not sure how.  It also requires either a NabuCasa subscription or having your HASS instance be accessible from outside your home network since it relies on webhooks.  Also, the Amazon Shopping app has to be installed for the notifications to be received in the first place.
+
+### Tasker Setup
+
+Let's start with getting Tasker set up.  First step is to set up a webhook.  You can do this with NodeRed via a node or you can set up an [automation in HASS](https://www.home-assistant.io/docs/automation/trigger/#webhook-trigger).  As detailed below, I did mine in NodeRed.  Once you get your unique webhook ID, save it to a text file somewhere as you'll need it shortly.
+
+Here's [a link to the XML files](https://gist.github.com/FuzzyMistborn/2a3e231d50edfc5c724b9fc5123c01ed) you should be able to just import into Tasker.  Save them to your phone, open up Tasker, and long press on "Profiles."  That should open up a menu where you can click "Import Profile."  Browse to the right profile and import it.  Check out [this guide](https://www.reddit.com/r/tasker/comments/7g7694/how_to_import_a_file_into_tasker_a_quick_easy/) if you need help.
+
+Note that for my HTTP calls in the task, my URL is `%HA_ADDR/api/webhook/%NR_WEBHOOK`.  Tasker allows you to use variables.  Global variables (which can be used in all tasks) are in ALL CAPS.  I use variables because it makes it very simple to change in case I ever need to change my HASS URL and/or the webhook ID.  Otherwise I'd have to change a bunch of tasks which would be a PITA.  If you don't want to do this you can simply modify the URL to match your HASS instance URL and the webhook ID.  So something like `https://hass.yourdomain.com/api/webook/YOUR_WEBOOK`.
+
+Provided you've given both Tasker and AutoNotification the correct permissions (I found AutoNotification to be a bit tricky to get set correctly, I suggest running some tests to make sure it's working), that should be all you need to do.  You should not need to change anything else.
+
+### NodeRed Setup
+
+Like I indicated above, you'll need to have the Node-Red custom component installed.  The reason is that the below code uses the integration to create and update custom sensors.  There's probably a way to create sensors in HASS via automations but I'm not familiar with how to do that.
+
+Note that I went in and modified the entity_ids of the sensors once they were created to [`sensor.mail_amazon_packages_nearby`](https://smarthome.weyl.casa/developer-tools/state#) and `sensor.mail_amazon_packages_delivering`.  You don't have to do this step but you'd need to modify the templates in the NR setup to match.
+
+Here's what your result should look like (the code to import is below):
+
+{{< figure src="image.png" >}}
+
+Just to explain.  When a webhook is received, if it's an "out for delivery" or "nearby" notification it is sent via the first switch node to the correct path to then add 1 to the existing sensor value and then update the sensor.  Once a package is delivered, it subtracts 1 from the sensor.  I had to add a check on the subtraction because sometimes I wouldn't receive an "out for delivery" or "nearby" notification for every package and I didn't want negative values.  Finally, there's a reset node to trigger at midnight so everything starts off at 0.
+
+From here you can modify your notifications to be whatever you want.  I have a trigger node on mine to delay things by a minute as sometimes I have multiple packages delivered at the same time and didn't want 5 notifications when it's really just one delivery.
+
+```json
+[{"id":"33f49d42.466b7a","type":"ha-entity","z":"1fe83a7f.e0f0b6","name":"Amazon Nearby","server":"63517380.eb951c","version":1,"debugenabled":false,"outputs":1,"entityType":"sensor","config":[{"property":"name","value":"Mail Amazon Packages Nearby"},{"property":"device_class","value":""},{"property":"icon","value":""},{"property":"unit_of_measurement","value":"package(s)"}],"state":"payload","stateType":"msg","attributes":[],"resend":true,"outputLocation":"","outputLocationType":"none","inputOverride":"allow","x":880,"y":4260,"wires":[[]]},{"id":"b43c5eca.57be58","type":"api-render-template","z":"1fe83a7f.e0f0b6","name":"Add 1","server":"63517380.eb951c","template":"{{ states('sensor.mail_amazon_packages_nearby') | int + 1 }}","resultsLocation":"payload","resultsLocationType":"msg","templateLocation":"","templateLocationType":"none","x":530,"y":4260,"wires":[["33f49d42.466b7a"]]},{"id":"e3aaae46.d1ab3","type":"change","z":"1fe83a7f.e0f0b6","name":"Reset","rules":[{"t":"set","p":"payload","pt":"msg","to":"0","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":690,"y":4300,"wires":[["4b7d0e4.83c8bf","33f49d42.466b7a"]]},{"id":"a76f2d8.99415d","type":"switch","z":"1fe83a7f.e0f0b6","name":"Amazon","property":"payload.amazon","propertyType":"msg","rules":[{"t":"eq","v":"nearby","vt":"str"},{"t":"eq","v":"out for delivery","vt":"str"},{"t":"eq","v":"delivered","vt":"str"}],"checkall":"true","repair":false,"outputs":3,"x":370,"y":4300,"wires":[["b43c5eca.57be58"],["a6adb473.794bb"],["54b61769.9755f","2bd4738b.515f9c"]]},{"id":"4b7d0e4.83c8bf","type":"ha-entity","z":"1fe83a7f.e0f0b6","name":"Amazon Delivery","server":"63517380.eb951c","version":1,"debugenabled":false,"outputs":1,"entityType":"sensor","config":[{"property":"name","value":"Mail Amazon Packages Delivery"},{"property":"device_class","value":""},{"property":"icon","value":""},{"property":"unit_of_measurement","value":"package(s)"}],"state":"payload","stateType":"msg","attributes":[],"resend":true,"outputLocation":"","outputLocationType":"none","inputOverride":"allow","x":890,"y":4340,"wires":[[]]},{"id":"a6adb473.794bb","type":"api-render-template","z":"1fe83a7f.e0f0b6","name":"Add 1","server":"63517380.eb951c","template":"{{ states('sensor.mail_amazon_packages_delivering') | int + 1 }}","resultsLocation":"payload","resultsLocationType":"msg","templateLocation":"","templateLocationType":"none","x":530,"y":4340,"wires":[["4b7d0e4.83c8bf"]]},{"id":"120197bc.91df2","type":"schedex","z":"1fe83a7f.e0f0b6","name":"Reset","passthroughunhandled":false,"suspended":false,"lat":"","lon":"","ontime":"0:00","ontopic":"","onpayload":"","onoffset":0,"onrandomoffset":0,"offtime":"","offtopic":"","offpayload":"","offoffset":0,"offrandomoffset":0,"mon":true,"tue":true,"wed":true,"thu":true,"fri":true,"sat":true,"sun":true,"x":530,"y":4300,"wires":[["e3aaae46.d1ab3"]]},{"id":"54b61769.9755f","type":"api-render-template","z":"1fe83a7f.e0f0b6","name":"Subtract 1","server":"63517380.eb951c","template":"{% if states('sensor.mail_amazon_packages_delivering') | int > 0 %}\n  {{ states('sensor.mail_amazon_packages_delivering') | int - 1 }}\n{% else %}\n  0\n{% endif %}","resultsLocation":"payload","resultsLocationType":"msg","templateLocation":"","templateLocationType":"none","x":550,"y":4380,"wires":[["c4aae13.3acb2a"]]},{"id":"c4aae13.3acb2a","type":"change","z":"1fe83a7f.e0f0b6","name":"Set to 0","rules":[{"t":"change","p":"payload","pt":"msg","from":"","fromt":"str","to":"0","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":700,"y":4380,"wires":[["4b7d0e4.83c8bf"]]},{"id":"2bd4738b.515f9c","type":"api-render-template","z":"1fe83a7f.e0f0b6","name":"Subtract 1","server":"63517380.eb951c","template":"{% if states('sensor.mail_amazon_packages_nearby') | int > 0 %}\n  {{ states('sensor.mail_amazon_packages_nearby') | int - 1 }}\n{% else %}\n  0\n{% endif %}","resultsLocation":"payload","resultsLocationType":"msg","templateLocation":"","templateLocationType":"none","x":550,"y":4220,"wires":[["28e5988a.c3dda"]]},{"id":"28e5988a.c3dda","type":"change","z":"1fe83a7f.e0f0b6","name":"Set to 0","rules":[{"t":"change","p":"payload","pt":"msg","from":"","fromt":"str","to":"0","tot":"num"}],"action":"","property":"","from":"","to":"","reg":false,"x":700,"y":4220,"wires":[["33f49d42.466b7a"]]},{"id":"460d5c63.ba0554","type":"ha-webhook","z":"1fe83a7f.e0f0b6","name":"Tasker","server":"63517380.eb951c","outputs":1,"webhookId":"","payloadLocation":"payload","payloadLocationType":"msg","headersLocation":"","headersLocationType":"none","x":230,"y":4300,"wires":[["a76f2d8.99415d"]]},{"id":"63517380.eb951c","type":"server","z":"","name":"Home Assistant","legacy":false,"rejectUnauthorizedCerts":false,"ha_boolean":"y|yes|true|on|home|open","connectionDelay":true,"cacheJson":true}]
+```
+
+## Conclusion
+
+This is definitely a niche thing but I know some people out there like their packages tracked and so far over the course of a week this has been rock solid for me.  I hope you find it useful!
