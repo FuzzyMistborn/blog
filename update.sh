@@ -2,7 +2,7 @@
 read -p "Commit description: " desc
 rm -r public
 hugo
-nginx
+docker restart nginx
 git add . && \
 git add -u && \
 git commit -m "$desc" && \
