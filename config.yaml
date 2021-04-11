@@ -1,8 +1,8 @@
 baseurl: https://blog.fuzzymistborn.com
 languageCode: en-us
-theme: stack
+theme: hugo-theme-stack
 paginate: 10
-title: 
+title: Random Musings
 
 # Change it to your Disqus shortname before using
 #disqusShortname: hugo-theme-stack
@@ -23,7 +23,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon:
+    favicon: /images/favicon.ico
 
     footer:
         since: 2021
@@ -35,7 +35,7 @@ params:
 
     sidebar:
         emoji: 
-        subtitle:
+        subtitle: Home automation, Linux, and other nerdy things
         avatar:
             local: false
             src: /images/LegalBot_crop.jpg

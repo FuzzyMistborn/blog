@@ -5,6 +5,7 @@ aliases:
   - about-us
   - about-hugo
   - contact
+  - about
 ---
 
 ### How to get in touch
