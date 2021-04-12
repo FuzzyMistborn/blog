@@ -1,7 +1,7 @@
 ---
 title: "Controlling Eufy Security Devices with ioBroker"
 date: 2020-12-28T22:55:00Z
-slug: eufy-security
+slug: controlling-eufy-security-devices-with-iobroker/
 image: header.png
 categories:
   - "Smart Home"
