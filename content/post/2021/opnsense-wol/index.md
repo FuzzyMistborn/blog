@@ -3,7 +3,6 @@ title: "Using WakeOnLan with Opnsense and HomeAsssitant"
 author: "FuzzyMistborn"
 date: 2021-05-28T08:38:00Z
 slug: opnsense-wol
-image: "header.jpeg"
 categories:
   - "Smart Home"
   - "Networking"
