@@ -30,7 +30,7 @@ Next is [Node-Red](https://nodered.org/).  The best way to think about Node-Red 
 
 The above automation replaced a few hundred lines of code and controls my alarm system.  I have some other examples I'll explore later, but I would highly recommend someone starting out with HASS to explore Node-Red as well.
 
-##Other Software
+## Other Software
 
 Just a quick rundown of other software I run. [MQTT](https://mqtt.org/) (Message Queuing Telemetry Transport) is an absolutely essential as it's an incredibly versatile tool.  I use it a lot of interconnect various devices and services.  Basically you create a MQTT broker/server and then various clients can connect to it to both send and read/receive messages on different topics.  Sounds complicated but once you dig into it a bit you'll see how simple and flexible it can be.  Personally I use [Mosquitto](https://mosquitto.org/) but there are a few other options out there.
 
@@ -46,7 +46,7 @@ Everything described above is run via [Docker](https://www.docker.com/) and [Doc
 
 Finally, speaking of my server, I'm running Ubuntu 18.04 LTS (soon to be upgraded to 20.04 LTS once the .1 patch comes out).  Ubuntu works well and is well supported so again it "just works."  Again part of the benefit of running everything in Docker is that the underlying OS doesn't matter a ton so use what works for you.
 
-##Conclusion
+## Conclusion
 
 So that's what runs my smart house.  Probably an overly simplistic overview but hope it's helpful to someone to see.  Next up I'll probably cover the hardware I use, before I start branching off a bit to some of the more nuts and bolts things that I want to write to document/write up.
 
