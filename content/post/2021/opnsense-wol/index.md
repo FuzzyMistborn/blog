@@ -1,5 +1,5 @@
 ---
-title: "Using WakeOnLan with Opnsense and HomeAsssitant"
+title: "Using WakeOnLan with Opnsense and HomeAssistant"
 author: "FuzzyMistborn"
 date: 2021-05-28T08:38:00Z
 slug: opnsense-wol
