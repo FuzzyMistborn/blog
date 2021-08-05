@@ -1,7 +1,7 @@
 ---
 title: "Switching DNS Providers and Reverse Proxies - What could go wrong?"
 author: "FuzzyMistborn"
-date: 2021-08-4T08:32:00Z
+date: 2021-08-04T08:32:00Z
 slug: caddy-linode-changes
 categories:
   - "Networking"
