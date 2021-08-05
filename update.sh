@@ -2,7 +2,7 @@
 read -p "Commit description: " desc
 rm -r public
 hugo
-docker restart nginx
+caddy reload ~/caddy/Caddyfile
 git add . && \
 git add -u && \
 git commit -m "$desc" && \
