@@ -96,7 +96,7 @@ $SERVICE wg-quick@wg0 restart
 
 ## Caddy/Reverse Proxy Setup
 
-Getting the Wireguard tunnel working was probably 90% of the battle for me, so I'm going to heavily detail the reverse proxy part.  Plus it will depend on what reverse proxy you're using.  If you have questions feel free to [contact me](https://blog.fuzzymistborn.com/about-me/) and I'm happy to try to help/discuss!
+Getting the Wireguard tunnel working was probably 90% of the battle for me, so I'm not going to heavily detail the reverse proxy part.  Plus it will depend on what reverse proxy you're using.  If you have questions feel free to [contact me](https://blog.fuzzymistborn.com/about-me/) and I'm happy to try to help/discuss!
 
 Here's my [example Caddyfile](https://github.com/FuzzyMistborn/infra/blob/main/roles/ambition/templates/Caddyfile.j2) on my Infra GitHub repo.  The basic gist would be the same in NGINX, basically all you do is tell the reverse proxy to send the traffic to the DMZ server's Wireguard IP address.  On the DMZ Server, here's my [Caddyfile](https://github.com/FuzzyMistborn/infra/blob/main/roles/honor/templates/Caddyfile.j2).  The DMZ Caddy Server listens on port 80 at the URL you want, and then redirects the traffic to the appropriate server on the LAN.
 
