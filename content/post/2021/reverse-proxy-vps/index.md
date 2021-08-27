@@ -23,7 +23,7 @@ So why route everything through the VPS?  A few reasons.  First, I don't have to
 
 So how do I do it?  Here's an image that explains it:
 
-{{< figure src="reverse_proxy_setup.png" width="500">}}
+{{< figure src="reverse_proxy_setup.png" width="600">}}
 
 Basically traffic comes into the VPS, gets routed by a Caddy server running on the VPS down a Wireguard tunnel to a server running on my LAN in a [DMZ](https://en.wikipedia.org/wiki/DMZ_%28computing%29).  The DMZ server also runs a Caddy server and routes the traffic to the appropriate app server.  For the record, yes, I know I could have used something like [Nebula](https://github.com/slackhq/nebula) or [Tailscale](https://tailscale.com/) or [Zerotier](https://www.zerotier.com/) and built a mesh network where everything was interconnected.  However, two things kept me from going down that path.  First, I didn't want to to have to set up/manage multiple connections to the VPS.  More things that could possibly break.  Second, I wanted to route everything through a single, well-hardened and secured server before crossing into my home network.  And third, many of the mesh VPN options out there are either not open source or require you to use a proprietary server as the "main" hub.  Nebula is an exception on both counts and I highly recommend reading [this post](https://theorangeone.net/posts/nebula-intro/) if you're interested in setting up Nebula, but it still was overkill for my needs as I just wanted a single tunnel/connection to worry about.
 
@@ -94,7 +94,7 @@ echo "wg failed 3 times - restarting tunnel"
 $SERVICE wg-quick@wg0 restart
 ```
 
-## VPS Caddy Setup
+## Caddy/Reverse Proxy Setup
 
 Getting the Wireguard tunnel working was probably 90% of the battle for me, so I'm going to heavily detail the reverse proxy part.  Plus it will depend on what reverse proxy you're using.  If you have questions feel free to [contact me](https://blog.fuzzymistborn.com/about-me/) and I'm happy to try to help/discuss!
 
