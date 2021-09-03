@@ -40,7 +40,7 @@ As I mentioned above, I backup my data to my Synology (using Minio) and Backblaz
 
 # Minio
 
-[Minio](https://min.io/) is an S3 compatible object storage app that can be run in Docker, and thus on the Synology NAS.  This is now much easier on DSM7, the latest version of the DSM software as it ships with a fairly recent version of Docker.  I would highly encourage you to install `docker-compose` on the Synology [see the docs here](https://docs.docker.com/compose/install/) as Synology's Docker GUI is....well...bad.  It's functional but to change things (like the `command` variable needed for Minio) you have to delete and recreate the container from the GUI.  Docker-Compose just makes it all simpler and easier.  Here's my docker-compose for Minio.
+[Minio](https://min.io/) is an S3 compatible object storage app that can be run in Docker, and thus on the Synology NAS.  This is now much easier on DSM7, the latest version of the DSM software as it ships with a fairly recent version of Docker.  I would highly encourage you to install `docker-compose` on the Synology [see the docs here](https://docs.docker.com/compose/install/) as Synology's Docker GUI is....well...bad.  It's functional but to change things (like the `command` variable needed for Minio) you have to delete and recreate the container from the GUI.  Docker-Compose just makes it all simpler and easier.  Here's my docker-compose for Minio:
 
 ```
 version: "2"
@@ -61,7 +61,7 @@ services:
     restart: unless-stopped
 ```
 
-Once you set up Minio, you can access it at `YOUR_SYNOLOGY_IP:9000` in your web browser.  Login with your root user/password (this is what you use for your AWS_ACCESS_KEY_ID and SECRET_ACCESS_KEY for [Autorestic](https://autorestic.vercel.app/backend/available#s3--minio)).
+Once you set up Minio, you can access it at `YOUR_SYNOLOGY_IP:9000` in your web browser.  Login with your root user/password (this is what you use for your AWS_ACCESS_KEY_ID and SECRET_ACCESS_KEY for [Autorestic](https://autorestic.vercel.app/backend/available#s3--minio)).  Alternatively, Alex/IronicBadger has a post [here](https://blog.ktz.me/access-a-synology-nas-with-traefik-on-dsm7/) for setting up a reverse proxy (using Traefik) to access Minio.  I prefer the IP address but to each their own.
 
 And that's it!  You now have an S3 compatible object storage location on your Synology NAS.  Makes backup pretty easy if you ask me!
 
