@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-SSH (Secure Shell) is pretty must a necessity in any kind of smart home set up, particularly if you're running Linux.  It's the main way that you connect to your computer (presuming its not your main desktop but some kind of server/Raspberry Pi/NUC/other computer).  Because SSH is so crucial, it's also a potential vector for hackers to gain access to your system so you really need to make sure it's protected.
+SSH (Secure Shell) is pretty much a necessity in any kind of smart home set up, particularly if you're running Linux.  It's the main way that you connect to your computer (presuming its not your main desktop but some kind of server/Raspberry Pi/NUC/other computer).  Because SSH is so crucial, it's also a potential vector for hackers to gain access to your system so you really need to make sure it's protected.
 
 I don't really want to spend a lot of time on the standard practices to secure SSH.  There are plenty of articles out there that cover this.  My personal favorite is from [How-to Geek here](https://www.howtogeek.com/443156/the-best-ways-to-secure-your-ssh-server/).  At a minimum, you need to disable root ssh login, turn off password authentication and only use SSH keys.  Presuming you've done that, let's take it a step further and let's restrict what terminal commands an SSH key can perform.
 
