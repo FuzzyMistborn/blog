@@ -2,3 +2,5 @@
 resources/
 /public/
 .obsidian
+.vault-stats
+.hugo_build.lock
