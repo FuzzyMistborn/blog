@@ -3,7 +3,6 @@ title: "Using Renovate-Bot to Manage Infrastructure"
 author: "FuzzyMistborn"
 date: 2021-11-09T11:01:00Z
 slug: using-renovatebot
-image: "header.jpeg"
 categories:
   - "Infrastructure"
 tags:
@@ -36,7 +35,7 @@ By far the best solution I have found is Renovate-Bot.  Renovate is like Dependa
 
 My usecase is to manage the version tags of my Docker containers.  Renovate-Bot automatically creates pull requests that detail the version it would update to and in some cases a link to or a description of the changes based on the changelog.  Then I just have to merge the PR, pull it down to my local repo and then push the update out to the appropriate server.  It took a little work to get my configuration right to track the versions but once I got it it really just works.  And best of all, I don't have to monitor all the various containers/repos to be notified when there's an update.
 
-![Example PR](example-pr.png)
+{{< figure src="example-pr.png" width="500">}}
 
 There are [many ways](https://docs.renovatebot.com/getting-started/running/) to run Renovate-Bot.  Basically you can either self-host it (yes there's a Docker container) or run it via Renovate's service.  Personally I'm using the [GitHub App](https://github.com/marketplace/renovate) option instead of GitHub Actions but I've been exploring self-hosting it eventually.  Maybe once I deploy [Drone](https://www.drone.io/) and some more CI stuff I'll get around to it.
 
