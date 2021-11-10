@@ -1,7 +1,7 @@
 ---
 title: "Ansible - Swiss Army Knife of the Homelab"
 author: "FuzzyMistborn"
-date: 2021-11-04T04:32:58Z
+date: 2021-11-09T10:13:58Z
 slug: ansible-intro-basics
 image: "header.png"
 categories:
