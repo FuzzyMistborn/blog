@@ -8,7 +8,6 @@ steps:
   settings:
     hugo_version: 0.89.2
     extended: true
-    pull: always
     config: config.yaml
     validate: true
   commands:
@@ -33,3 +32,28 @@ steps:
       from_secret: ssh_port
   when:
     branch: main
+
+- name: Send TG Notification
+  image: appleboy/drone-telegram
+  settings:
+    token:
+      from_secret: tg_token
+    to:
+      from_secret: tg_id
+    format: markdown
+    message: >
+      {{#success build.status}}
+        ✅  Build for `{{repo.name}}` was *successful*!
+
+        📝  {{ commit.message }}
+
+        🌐  [Output]({{build.link}})
+      {{else}}
+        ❌  Build for `{{repo.name}}` has *FAILED*!
+
+        📝  {{ commit.message }}
+
+        🌐  [Output]({{build.link}})
+      {{/success}}
+  when:
+    status: [ success, failure ]
