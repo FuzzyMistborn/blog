@@ -4,14 +4,20 @@ name: default
 
 steps:
 - name: Build Site
-  image: plugins/hugo
-  settings:
-    hugo_version: 0.89.2
-    pull: always
-    config: config.yaml
-    theme: themes/hugo-theme-stack
-    output: public
-    validate: true
+  image: alpine
+    commands:
+      - wget https://github.com/gohugoio/hugo/releases/download/v0.89.2/hugo_0.89.2_Linux-64bit.tar.gz -q -O - | tar -xz
+      - ./hugo hugo
+
+#- name: Build Site
+#  image: plugins/hugo
+#  settings:
+#    hugo_version: 0.89.2
+#    pull: always
+#    config: config.yaml
+#    theme: themes/hugo-theme-stack
+#    output: public
+#    validate: true
 
 - name: Deploy to VPS
   image: appleboy/drone-scp
