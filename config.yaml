@@ -108,17 +108,20 @@ menu:
           name: Home
           url: /
           weight: -100
-          pre: home
+          params:
+            icon: home
         - identifier: about
           name: About
           url: /about
           weight: -90
-          pre: user
+          params:
+            icon: user
         - identifier: github
           name: Report an issue
           url: https://github.com/FuzzyMistborn/blog/issues
           weight: -70
-          pre: github
+          params:
+            icon: github
 
 related:
     includeNewer: true
