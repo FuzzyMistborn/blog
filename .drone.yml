@@ -23,7 +23,6 @@ steps:
     target:
       from_secret: ssh_target
     source: public/*
-    rm: true
     username:
       from_secret: ssh_username
     key:
