@@ -13,6 +13,7 @@ steps:
     validate: true
   commands:
     - git submodule update --init --recursive
+    - /bin/drone-hugo
 
 - name: Deploy to VPS
   image: appleboy/drone-scp
