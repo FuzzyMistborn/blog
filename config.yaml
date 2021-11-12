@@ -2,7 +2,7 @@ baseurl: https://blog.fuzzymistborn.com
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 10
-title: Random Musings Test2
+title: Random Musings
 
 # Change it to your Disqus shortname before using
 #disqusShortname: hugo-theme-stack
