@@ -77,16 +77,22 @@ steps:
 
 
         📝  {{ commit.message }}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> staging
         🌐  [Output]({{build.link}})
         {{else}}
         ❌  Build for `{{repo.name}}` has *FAILED*!
 
 
         📝  {{ commit.message }}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> staging
         🌐  [Output]({{build.link}})
         {{/success}}
   when:
