@@ -1,0 +1,32 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: Build Site
+  image: plugins/hugo
+  settings:
+    hugo_version: 0.89.2
+    pull: always
+    validate: true
+
+- name: Deploy to VPS
+  image: appleboy/drone-scp
+  settings:
+    host:
+      from_secret: ssh_host
+    target:
+      from_secret: ssh_target
+    source: public/*
+    username:
+      from_secret: ssh_username
+    key:
+      from_secret: ssh_key
+    port:
+      from_secret: ssh_port
+  when:
+    branch:
+    - main
+    event:
+      exclude:
+      - pull_request
