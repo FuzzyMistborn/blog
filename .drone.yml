@@ -14,6 +14,8 @@ steps:
   commands:
     - git submodule update --init --recursive
     - /bin/drone-hugo
+  when:
+    branch: main
 
 - name: Deploy to VPS
   image: appleboy/drone-scp
@@ -29,3 +31,5 @@ steps:
       from_secret: ssh_key
     port:
       from_secret: ssh_port
+  when:
+    branch: main
