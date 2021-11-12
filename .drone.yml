@@ -8,6 +8,9 @@ steps:
   settings:
     hugo_version: 0.89.2
     pull: always
+    config: config.yaml
+    theme: themes/hugo-theme-stack
+    output: public
     validate: true
 
 - name: Deploy to VPS
@@ -15,8 +18,8 @@ steps:
   settings:
     host:
       from_secret: ssh_host
-    target:
-      from_secret: ssh_target
+    target: /tmp/hugo
+#      from_secret: ssh_target
     source: public/*
     username:
       from_secret: ssh_username
@@ -24,9 +27,3 @@ steps:
       from_secret: ssh_key
     port:
       from_secret: ssh_port
-  when:
-    branch:
-    - main
-    event:
-      exclude:
-      - pull_request
