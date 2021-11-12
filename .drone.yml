@@ -78,12 +78,14 @@ steps:
 
         📝  {{ commit.message }}
 
+
         🌐  [Output]({{build.link}})
         {{else}}
         ❌  Build for `{{repo.name}}` has *FAILED*!
 
 
         📝  {{ commit.message }}
+
 
         🌐  [Output]({{build.link}})
         {{/success}}
