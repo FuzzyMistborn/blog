@@ -1,9 +1,9 @@
----
 kind: pipeline
 type: docker
 name: default
 
-- name: Build Site
+steps:
+- name: Build Site (main)
   image: plugins/hugo
   settings:
     hugo_version: 0.89.2
@@ -13,8 +13,10 @@ name: default
   commands:
     - git submodule update --init --recursive
     - /bin/drone-hugo
+  when:
+    branch: main
 
-- name: Deploy to VPS
+- name: Deploy to VPS (main)
   image: appleboy/drone-scp
   settings:
     host:
@@ -28,6 +30,38 @@ name: default
       from_secret: ssh_key
     port:
       from_secret: ssh_port
+  when:
+    branch: main
+
+- name: Build Site (staging)
+  image: plugins/hugo
+  settings:
+    hugo_version: 0.89.2
+    extended: true
+    config: config.yaml
+    validate: true
+  commands:
+    - git submodule update --init --recursive
+    - /bin/drone-hugo
+  when:
+    branch: staging
+
+- name: Deploy to VPS (staging)
+  image: appleboy/drone-scp
+  settings:
+    host:
+      from_secret: ssh_host
+    target:
+      from_secret: ssh_target
+    source: public/*
+    username:
+      from_secret: ssh_username
+    key:
+      from_secret: ssh_key
+    port:
+      from_secret: ssh_port
+  when:
+    branch: staging
 
 - name: Send TG Notification
   image: appleboy/drone-telegram
@@ -37,6 +71,6 @@ name: default
     to:
       from_secret: tg_id
     format: markdown
-    message: "{{#success build.status}}✅  Build for `{{repo.name}}` (Staging) was *successful*!{{else}}❌  Build for `{{repo.name}}` has *FAILED*!{{/success}} \n🌐  [Output]({{build.link}})\n📝  Commit: {{ commit.message }}"
+    message: "{{#success build.status}}✅  Build for `{{repo.name}}` was *successful*!{{else}}❌  Build for `{{repo.name}}` has *FAILED*!{{/success}} \n🌐  [Output]({{build.link}})\n📝  Commit: {{ commit.message }}"
   when:
     status: [ success, failure ]
