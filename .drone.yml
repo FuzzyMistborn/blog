@@ -3,12 +3,6 @@ kind: pipeline
 type: docker
 name: default
 
-trigger:
-  branch:
-  - staging
-  event:
-  - push
-
 - name: Build Site
   image: plugins/hugo
   settings:
