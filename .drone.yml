@@ -5,7 +5,59 @@ name: default
 
 trigger:
   branch:
+  - main
+  event:
+  - push
+
+steps:
+- name: Build Site
+  image: plugins/hugo
+  settings:
+    hugo_version: 0.89.2
+    extended: true
+    config: config.yaml
+    validate: true
+  commands:
+    - git submodule update --init --recursive
+    - /bin/drone-hugo
+
+- name: Deploy to VPS
+  image: appleboy/drone-scp
+  settings:
+    host:
+      from_secret: ssh_host
+    target:
+      from_secret: ssh_target
+    source: public/*
+    username:
+      from_secret: ssh_username
+    key:
+      from_secret: ssh_key
+    port:
+      from_secret: ssh_port
+
+- name: Send TG Notification
+  image: appleboy/drone-telegram
+  settings:
+    token:
+      from_secret: tg_token
+    to:
+      from_secret: tg_id
+    format: markdown
+    message: "{{#success build.status}}✅  Build for `{{repo.name}}` (Main) was *successful*!{{else}}❌  Build for `{{repo.name}}` has *FAILED*!{{/success}} \n🌐  [Output]({{build.link}})\n📝  Commit: {{ commit.message }}"
+  when:
+    status: [ success, failure ]
+
+---
+kind: pipeline
+type: docker
+name: default
+
+trigger:
+  branch:
   - staging
+  event:
+  - push
 
 - name: Build Site
   image: plugins/hugo
