@@ -19,7 +19,7 @@ draft: false
 
 Let's talk about Drone.  No, not this kind of drone
 
-![[drone.jpg]]
+![No not the flying drone](drone.jpg)
 [This kind of Drone](https://www.drone.io/)!  The [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) kind.  The one that helps you with automatically doing all kinds of fun coding things.  Basically, Drone is a self-hosted alternative to something like [GitHub Actions](https://github.com/features/actions) or [Jenkins](https://jenkins.io/) or [Travis CI](https://travis-ci.com/).  Basically, if there's something with your code that you want to run automatically after some action is taken, then CI is for you.
 
 I've been playing around with Drone for about a week now, and while ultimately I'm pretty happy with it, I'm also incredibly frustrated by it.  My initial foray into continuous integration projects started a few months ago with GitHub Actions so I'm entirely willing to admit that it may be user/beginner error.  However, there are seemingly basic things that should *just work* but don't.  Other things that should be easily to set up but aren't.  The number of times I wanted to pull hair out over something not working is beyond count.
@@ -77,7 +77,7 @@ That's not to say that Drone is perfect.  I really struggled with some things th
 
 Let's start with an easy one.  Drone includes the ability to trigger builds based on a [cron schedule](https://docs.drone.io/pipeline/docker/syntax/trigger/#by-cron) from the GUI.  
 
-![[drone-cron.png]]
+![Drone Crone UI Screen](drone-cron.png)
 
 Notice, however, that there's no way to create a custom schedule beyond the defaults.  Also, you can't set the time the cron triggers.  By default it's midnight UTC.  Oh, and you can't set the timezone from the GUI either...I had to mount `/etc/localtime` as a volume for it to set it to my local timezone.
 
@@ -92,7 +92,7 @@ curl -X POST https://drone.example.com/api/repos/USER/REPO/cron \
 
 Note the cron scheduling includes seconds as an option so it's 6 asterisks instead of the usual 5.  So seconds, minutes, hours, day of month, month, and day of week.  Once it's created, you can see the schedule along with when the next execution will be.
 
-![[drone-cron2.png]]
+![Drone Crone UI Screen](drone-cron2.png)
 
 ### Triggering Builds
 
