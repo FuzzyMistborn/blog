@@ -116,6 +116,12 @@ menu:
           weight: -90
           params:
             icon: user
+        - identifier: support
+          name: Support
+          url: /support
+          weight: -80
+          params:
+            icon: gift
         - identifier: github
           name: Report an issue
           url: https://github.com/FuzzyMistborn/blog/issues
