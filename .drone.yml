@@ -6,7 +6,7 @@ steps:
 - name: Build Site (main)
   image: plugins/hugo
   settings:
-    hugo_version: 0.91.2
+    hugo_version: 0.93.0
     extended: true
     config: config.yaml
     validate: true
