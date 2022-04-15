@@ -10,6 +10,7 @@ tags:
   - Hyundai
   - Electric Vehicle
   - BEV
+image: "header.jpg"
 draft: false
 ---
 
