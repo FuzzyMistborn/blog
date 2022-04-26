@@ -26,12 +26,12 @@ DreameTech uses the same underlying tech as Xiaomi/Roborock.  They make a number
 Overall the Dreametech vacuums are leagues better than Eufy.  For starters, the LIDAR mapping works great.  I'm able to control which rooms the vacuum cleans and I know it will clean the whole room instead of hoping that every spot gets covered with many random passes.  I also can add "no go zones" where I don't want the robot to go.  For example there's tassles on the carpet or an area where I know the robot will get stuck.  Also as a result of the mapping, the Dreametech vacuums are also a lot more efficient.  The Eufy vacs used to run for ~1 hour.  The Dreametechs run for closer to 40 minutes.
 
 ## D9
-![Dreametech D9](D9.jpg)
+{{< figure src="D9.jpg" width="400">}}
 
 The D9 is a great, basic vacuum.  It comes with LIDAR for room mapping, which works really well as discussed above.  It's really a no-frills vacuum that you can get for ~$250 on Amazon.  It *does* come with a mop attachment but...it's pretty lackluster.  Basically it just drags a wet cloth around your floor.  It can do an OK job but it won't work any miracles.  My biggest knock on it is that it sometimes gets twitchy with Valetudo and loses the map data or drops the wifi connection.  But I think for the price, it's great.
 
 ## Z10
-![Dreametech Z10 Pro](Z10.jpg)
+{{< figure src="Z10.jpg" width="400">}}
 
 The Z10 is basically the same robot as the D9 with a few more bells and whistles.  The biggest extra features are the self-emptying bin and the object avoidance.  Honestly not sure that was worth the premium but... #forscience.  Both features are nice to have (and the self-emptying part does save me some time) but neither are revolutionary game changers.
 
