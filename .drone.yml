@@ -39,7 +39,7 @@ steps:
     hugo_version: 0.98.0
     extended: true
     config: config.yaml
-    validate: true
+    validate: false
   commands:
     - git submodule update --init --recursive
     - /bin/drone-hugo
