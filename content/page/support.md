@@ -14,7 +14,6 @@ If you like what I do or what I've written and you want to say "Thanks!", here a
 
 If you click the below links and sign up, you get a benefit and so do I.
 
-- [FastMail](https://ref.fm/u27104120) - Current offer is 10% off your first year!
 - [Linode](https://www.linode.com/?r=92c3726656e356bd796cab8d39978978a924a611) - Current offer is a $100 credit for 60 days (subject to change!)
 
 ### Donations
