@@ -3,7 +3,7 @@ title: "Object Detection with BlueIris and Deepstack"
 author: "FuzzyMistborn"
 date: 2020-08-26T18:59:08Z
 slug: object-detection-with-blueiris-and-deepstack
-image: "header.jpeg"
+image: "header.png"
 categories:
   - "Smart Home"
 tags:
