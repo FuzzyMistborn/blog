@@ -42,7 +42,7 @@ Oh, that's one important thing to understand here: Valetudo is the software you 
 
 Also keep in mind you will need a UART adapter to flash the robot.  They're pretty cheap on Amazon.  And also you'll need a wifi device later, preferably one that also runs Linux.  I used a Pi for the job.
 
-**EDIT 7/15/2022**: Valetudo has revised and vastly improved the rooting instructions [here](https://valetudo.cloud/pages/general/rooting-instructions.html).  I'll keep the below for posterity sake, but at this point I believe you can simply follow the Valetudo guide and not mine.  Most notably, the introduction of the [HTTP-Bridge helper](https://github.com/Hypfer/valetudo-helper-httpbridge) avoids a lot of the pains I had.
+>**EDIT 7/15/2022**: Valetudo has revised and vastly improved the rooting instructions [here](https://valetudo.cloud/pages/general/rooting-instructions.html).  I'll keep the below for posterity sake, but at this point I believe you can simply follow the Valetudo guide and not mine.  Most notably, the introduction of the [HTTP-Bridge helper](https://github.com/Hypfer/valetudo-helper-httpbridge) avoids a lot of the pains I had.
 
 Once you have what you need, I would suggest starting with the Valetudo instructions.  You'll need to pry open the robot (takes a decent amount of force but just take your time).  Connect the pins to the headers and to your computer.  Keep following the instructions until you get to the part where you need to login.  To get the password you'll need the FULL serial number (meaning BOTH lines in the dustbin.  I used the calculator linked in the Valetudo docs.  Now we'll need to switch over to the Dustbuilder site to get the firmware we need to continue.
 
