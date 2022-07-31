@@ -93,15 +93,15 @@ I haven't yet tried the substream recording/upgrading to higher res on motion be
 
 I won't go through all the setup for Deepstack and BlueIris as I think that's well covered in the video.  I also think Rob's suggested settings for AI are pretty decent, though I turn off "Begin analysis with motion-leading image" to try to get the best snapshot of the person or car I can.  Here's my typical settings:
 
-{{< figure src="blueiris-deepstack-settings.png" width="600">}}
+![AI Detection Settings](blueiris-deepstack-settings.png)
 
 You absolutely should tweak the settings and the confidence levels to fit your own needs.  Now to get the alert image into HASS, you need to go to the Alerts tab.  At the bottom, click "On alert..."  Click the plus icon and click "Web request or MQTT".  
 
-{{< figure src="blueiris-alerts.png" width="800">}}
+![Alert Setup](blueiris-alerts.png)
 
 For MQTT topic, I would recommend something like `BlueIris/image/&CAM` where `&CAM` will automatically be substituted by BlueIris to be the shorthand name for your camera (makes copying/pasting for multiple cameras easy).  I like to make sure all the images are under the same subtopic just for organizational purposes, but you could configure yours however you like.  The Post/payload must be `&ALERT_JPEG` as that's the secret sauce that tells BlueIris to send the alert image to MQTT in Base64 encoding.  I also enabled `MQTT retain message` so the camera entity in HASS you'll set up below always has an image to pull and you shouldn't get any errors.  Here's an example of what mine looks like:
 
-{{< figure src="blueiris-alerts-mqtt.png" width="600">}}
+![Alert Configuration](blueiris-alerts-mqtt.png)
 
 You also can modify what profiles should the alert image get sent.  For example, I have a "Vacation/Alarm" profile where all my cameras (indoor and outdoor) send alerts, but a "Default" profile where indoor alert images are not processed.  Nobody wants pictures of them walking around in their underwear IMO....
 
