@@ -97,7 +97,7 @@ I won't go through all the setup for Deepstack and BlueIris as I think that's we
 
 You absolutely should tweak the settings and the confidence levels to fit your own needs.  Now to get the alert image into HASS, you need to go to the Alerts tab.  At the bottom, click "On alert..."  Click the plus icon and click "Web request or MQTT".  
 
-{{< figure src="blueiris-alerts.png" width="600">}}
+{{< figure src="blueiris-alerts.png" width="800">}}
 
 For MQTT topic, I would recommend something like `BlueIris/image/&CAM` where `&CAM` will automatically be substituted by BlueIris to be the shorthand name for your camera (makes copying/pasting for multiple cameras easy).  I like to make sure all the images are under the same subtopic just for organizational purposes, but you could configure yours however you like.  The Post/payload must be `&ALERT_JPEG` as that's the secret sauce that tells BlueIris to send the alert image to MQTT in Base64 encoding.  I also enabled `MQTT retain message` so the camera entity in HASS you'll set up below always has an image to pull and you shouldn't get any errors.  Here's an example of what mine looks like:
 
