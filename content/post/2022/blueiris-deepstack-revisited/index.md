@@ -11,7 +11,7 @@ tags:
   - Cameras
   - NVR
   - Deepstack
-image: "header.jpg"
+image: "header.png"
 draft: false
 ---
 
