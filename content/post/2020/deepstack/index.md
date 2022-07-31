@@ -15,7 +15,7 @@ tags:
 draft: false
 ---
 
-> **NOTE**: See [revised post here](https://blog.fuzzymistborn.com/).  Below is being left for posterity, but is not longer what I would recommend.
+> **NOTE**: See [revised post here](https://blog.fuzzymistborn.com/blueiris-deepstack-revisited).  Below is being left for posterity, but is not longer what I would recommend.
 
 As I previously mentioned, I recently ditched my Wyze cams and moved over to Eufy cams for indoor.  I also decided to buy some outdoor cams to mount and watch my front door and driveway in real time.  However, I got tired of getting lots of false alerts due to trees/bushes moving in the wind, bugs flying by the camera at night, etc.  So I started to explore ways of weeding out the false positive alerts and only getting alerts when there actually was a person at my door or a car in my driveway.  Went through a few set ups but I've found one that has been working terrifically for a few days so wanted to share.
 
