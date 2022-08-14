@@ -36,7 +36,7 @@ steps:
 - name: Build Site (staging)
   image: plugins/hugo
   settings:
-    hugo_version: 0.98.0
+    hugo_version: 0.100.1
     extended: true
     config: config.yaml
     validate: false
