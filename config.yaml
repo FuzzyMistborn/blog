@@ -48,19 +48,20 @@ params:
 
     comments:
         enabled: true
+        provider: giscus
         giscus:
-            repo: "fuzzymistborn/blog"
-            repoID: "MDEwOlJlcG9zaXRvcnkzNTY0NTcxMjQ="
-            category: "Blog Post Comments"
-            categoryID: "DIC_kwDOFT8apM4CTUN7"
-            mapping: "title"
+            repo: fuzzymistborn/blog
+            repoID: MDEwOlJlcG9zaXRvcnkzNTY0NTcxMjQ=
+            category: Blog Post Comments
+            categoryID: DIC_kwDOFT8apM4CTUN7
+            mapping: title
             strict: 0
-            lightTheme: "light"
-            darkTheme: "dark"
+            lightTheme: light
+            darkTheme: dark
             reactionsEnabled: 1
             emitMetadata: 0
-            inputPosition: "top"
-            lang: "en"
+            inputPosition: top
+            lang: en
 
         utterances:
             repo:
