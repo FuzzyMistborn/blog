@@ -47,8 +47,7 @@ params:
             default: See a typo/mistake or something that could be improved?  Open an issue or PR on Github!
 
     comments:
-        enabled: false
-        provider: disqus
+        enabled: true
 
         utterances:
             repo:
