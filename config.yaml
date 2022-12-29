@@ -48,7 +48,7 @@ params:
 
     comments:
         enabled: true
-        provider: giscus
+        giscus:
             repo: fuzzymistborn/blog
             repoID: MDEwOlJlcG9zaXRvcnkzNTY0NTcxMjQ=
             category: Blog Post Comments
