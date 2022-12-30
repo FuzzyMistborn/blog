@@ -21,8 +21,7 @@ steps:
   settings:
     host:
       from_secret: ssh_host
-    target:
-      from_secret: ssh_target
+    target: /var/www/blog
     source: public/*
     username:
       from_secret: ssh_username
@@ -51,8 +50,7 @@ steps:
   settings:
     host:
       from_secret: ssh_host
-    target:
-      from_secret: ssh_target
+    target: /var/www/staging
     source: public/*
     username:
       from_secret: ssh_username
