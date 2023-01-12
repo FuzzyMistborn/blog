@@ -47,8 +47,21 @@ params:
             default: See a typo/mistake or something that could be improved?  Open an issue or PR on Github!
 
     comments:
-        enabled: false
-        provider: disqus
+        enabled: true
+        provider: giscus
+        giscus:
+            repo: fuzzymistborn/blog
+            repoID: MDEwOlJlcG9zaXRvcnkzNTY0NTcxMjQ=
+            category: Blog Post Comments
+            categoryID: DIC_kwDOFT8apM4CTUN7
+            mapping: title
+            strict: 0
+            lightTheme: light
+            darkTheme: dark
+            reactionsEnabled: 1
+            emitMetadata: 0
+            inputPosition: top
+            lang: en
 
         utterances:
             repo:
