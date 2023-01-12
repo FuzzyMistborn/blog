@@ -25,7 +25,7 @@ I realize in hindsight I didn't post much in 2022.  Well it's 2023 now and I gue
 
 Here's an image of all the stuff I've deployed (may be a few things missing, and things I've reused aren't pictured)
 
-![[2023/new-home-hardware/header.jpg]]
+![That's a lot of switches....](header.jpg)
 
 # Thermostat
 
@@ -78,7 +78,7 @@ Ok this one hurts a little bit.  I had this grand plan to use Volumio on a coupl
 
 Then my son spent a week at his grandparents where my nephew has one of those "ok to wake" clocks that has an actual clock on it.  And apparently my son learned what "7:00" was and that *that* was an OK time to wake up and get out of bed (instead of various times between 5 and 7am despite my "red light" strategy in the old house).  So I began looking at various options.  Ultimately I decided to go with the Hatch Rest+ (1st gen) which were on sale for the holidays.  
 
-![[hatch.png]]
+![Hatch Rest+ Gen1](hatch.png)
 
 As you can see, it has a built in clock, LED light, and sound machine, and it's controllable over WiFi, not Bluetooth as the older models were.  AND it has a battery backup that can last a few hours in the event of a power outage.  So while I *could* have built something custom again with Raspberry Pis, some LEDs, and all that, ultimately it just seemed easier to bite the bullet and pay for a polished product.
 
@@ -105,3 +105,7 @@ Lastly, despite my best efforts I now am a "proud" owner of a MyQ garage door op
 # Conclusion
 
 OK wow this ended up longer than I was originally thinking.  Lots of fun new toys, LOTS of automating still to do.  Happy to answer any questions if you have them!
+
+And just for lulz, here's all the dumb switches I've taken out.
+
+![Anybody want some dumb switches?](dumb_switches.jpg)
