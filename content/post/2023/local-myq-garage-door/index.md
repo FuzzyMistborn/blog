@@ -14,9 +14,9 @@ tags:
   - Local control
 ---
 
-Unfortunately, when we built our new house, the options for garage door opener were: MyQ, MyQ and MyQ (aka there were no options).  MyQ is made by Chamberlain (who also makes LiftMaster products), which basically is the garage door opener market.  There are a few other brands out there, but mostly all I see these days is Chamberlain.  Why don't I like MyQ?  Well, putting aside that it's a cloud-dependent garage door opener, I'm not a fan of Chamberlain's business practices.  In the past, they've tweaked their API with the apparent purpose of preventing third party integrations like HomeAssistant.  And also, they've charged for intergrating MyQ with Alexa and Google Home.  Which just feels....dirty.
+Unfortunately, when we built our new house, the options for garage door opener were: MyQ, MyQ and MyQ (aka there were no options).  MyQ is made by Chamberlain (who also makes LiftMaster products), which basically is the garage door opener market.  There are a few other brands out there, but mostly all I see these days is Chamberlain.  Why don't I like MyQ?  Well, putting aside that it's a cloud-dependent garage door opener, I'm not a fan of Chamberlain's business practices.  In the past, they've tweaked their API with the apparent purpose of preventing third party integrations like HomeAssistant.  And also, they've charged for integrating MyQ with Alexa and Google Home.  Which just feels....dirty.
 
-Personally I would have preferred a "dumb" garage door opener that I could then have smart-ified as I had before with a [Zwave-based GoControl/Linear opener](https://www.zwaveproducts.com/products/z-wave-garage-door-opener-remote-controller).  But I didn't feel like ripping out a perfectly good garage door opener and replacing it to the tune of a few hundred dollars.  So alternatives had to be found.  Unfortunatley, Chamberlain has implemented something they call "Security 2.0."  As I understand it, in "ye olden days," when you hooked up a button to a garage door and pressed the button, it basically shorted the connection and that caused the door to open or close.  Security 2.0 adds "security" by sending a rotating code to the door.  I honestly don't know any security this actually provides, but it does mean that the *only* devices that can work to open/close a MyQ garage door have to be made by Chamberlains (bet you didn't see that coming....).
+Personally I would have preferred a "dumb" garage door opener that I could then have smart-ified as I had before with a [Zwave-based GoControl/Linear opener](https://www.zwaveproducts.com/products/z-wave-garage-door-opener-remote-controller).  But I didn't feel like ripping out a perfectly good garage door opener and replacing it to the tune of a few hundred dollars.  So alternatives had to be found.  Unfortunately, Chamberlain has implemented something they call "Security 2.0."  As I understand it, in "ye olden days," when you hooked up a button to a garage door and pressed the button, it basically shorted the connection and that caused the door to open or close.  Security 2.0 adds "security" by sending a rotating code to the door.  I honestly don't know any security this actually provides, but it does mean that the *only* devices that can work to open/close a MyQ garage door have to be made by Chamberlains (bet you didn't see that coming....).
 
 So how to work around it?  Well thankfully some clever people figured out that you can solder some wires to a cheap Security 2.0 button and hook it up to a smart relay (and the garage door).  Then all you need to do is trigger the relay, which "presses" the button, and then boom, open garage door!
 
@@ -56,7 +56,7 @@ At this point I'd suggest testing your relay to make sure it all works.  To get 
         {% elif states('binary_sensor.garage_door_tilt') == 'on' %}
           Open
         {% else %}
-		  N/A
+          N/A
         {% endif %}
       open_cover:
         - service: switch.turn_on
