@@ -25,7 +25,7 @@ I realize in hindsight I didn't post much in 2022.  Well it's 2023 now and I gue
 
 Here's an image of all the stuff I've deployed (may be a few things missing, and things I've reused aren't pictured)
 
-![That's a lot of switches....](header.jpg)
+![That's a lot of switches....](content/post/2023/new-home-hardware/header.jpg)
 
 # Thermostat
 
