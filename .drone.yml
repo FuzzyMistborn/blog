@@ -6,12 +6,14 @@ steps:
 - name: Build Site (main)
   image: plugins/hugo
   settings:
-    hugo_version: 0.112.7
+    hugo_version: 0.115.1
     extended: true
     config: config.yaml
     validate: false
   commands:
     - git submodule update --init --recursive
+# https://github.com/drone-plugins/drone-hugo/issues/38
+    - apk add libresolv
     - /bin/drone-hugo
   when:
     branch: main
@@ -35,12 +37,14 @@ steps:
 - name: Build Site (staging)
   image: plugins/hugo
   settings:
-    hugo_version: 0.112.7
+    hugo_version: 0.115.1
     extended: true
     config: config.yaml
     validate: false
   commands:
     - git submodule update --init --recursive
+# https://github.com/drone-plugins/drone-hugo/issues/38
+    - apk add libresolv
     - /bin/drone-hugo
   when:
     branch: staging
