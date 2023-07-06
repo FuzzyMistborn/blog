@@ -4,7 +4,7 @@ name: default
 
 steps:
 - name: Build Site (main)
-  image: plugins/hugo
+  image: fuzzymistborn/hugo
   settings:
     hugo_version: 0.115.1
     extended: true
@@ -33,7 +33,7 @@ steps:
     branch: main
 
 - name: Build Site (staging)
-  image: plugins/hugo
+  image: fuzzymistborn/hugo
   settings:
     hugo_version: 0.115.1
     extended: true
