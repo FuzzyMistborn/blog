@@ -14,6 +14,8 @@ tags:
 draft: false
 ---
 
+> Note: See update [here](https://blog.fuzzymistborn.com/restic-server-over-minio/).  I no longer use or recommend Minio with Restic.  There's a better option!
+
 Having a good backup strategy has always been important to avoid data loss but is now even more important in this day and age of constant ransomware stories in the news.  Despite your best efforts to avoid clicking anything, all it takes is one slipup or mistake and your data can be lost.  I've long hunted for a good backup strategy and I think I've finally settled on a pretty good option utilizing Restic (plus a wrapper called Autorestic, more below) backing up data to my Synology NAS and to Backblaze's B2 Cloud Storage.
 
 # Backup Strategies

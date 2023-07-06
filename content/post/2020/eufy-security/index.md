@@ -11,6 +11,8 @@ tags:
   - ioBroker
 draft: false
 ---
+> Note: I don't or recommend Eufy's hardware anymore.  I think Amcrest or Reolink are more compelling options that actually have working RTSP (even over WiFi) for just a bit more money.  Also, if you still want to use Eufy, you don't need to use ioBroker anymore.  See this [GitHub repo](https://github.com/fuatakgun/eufy_security) for more info.
+
 As I think should be obvious, I'm very big on HomeAssistant.  It's a great piece of software and does many many many things well.  However, I bought a Eufy Doorbell camera over a year and a half ago and genuinely love it.  It has great set of features (local person detection, fast notifications, quick loading of streams in app, 2k video quality) but it lacked a HomeAssistant integration.  I created a repo to document the API but Eufy changed things around and it grew well beyond my skill to understand.  There's a working integration for HomeAssistant but it's limited to getting still images of last motion activity and creating a 3 minute RTMP stream from the camera (limitation of the API, not the integration).
 
 But then there's [this "adapter"](https://github.com/bropat/ioBroker.eufy-security/) for [ioBroker](https://www.iobroker.net/).  I will admit to not knowing much about ioBroker other than what you can glean from their website and some Googling.  It's a predominantly German IoT platform that in many ways is similar to HomeAssistant.  It is able to connect to [a lot of popular smart home devices](https://www.iobroker.net/#en/adapters).  And again, most importantly for my purposes, thanks to the work of @bropat it's able to control my Eufy Doorbell camera (and other Eufy indoor cameras).
