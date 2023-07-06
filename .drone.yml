@@ -13,7 +13,7 @@ steps:
   commands:
     - git submodule update --init --recursive
 # https://github.com/drone-plugins/drone-hugo/issues/38
-    - apk add libresolv
+    - apk add gcompat
     - /bin/drone-hugo
   when:
     branch: main
@@ -44,7 +44,7 @@ steps:
   commands:
     - git submodule update --init --recursive
 # https://github.com/drone-plugins/drone-hugo/issues/38
-    - apk add libresolv
+    - apk add gcompat
     - /bin/drone-hugo
   when:
     branch: staging
