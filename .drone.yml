@@ -12,8 +12,6 @@ steps:
     validate: false
   commands:
     - git submodule update --init --recursive
-# https://github.com/drone-plugins/drone-hugo/issues/38
-    - apk add gcompat
     - /bin/drone-hugo
   when:
     branch: main
@@ -43,8 +41,6 @@ steps:
     validate: false
   commands:
     - git submodule update --init --recursive
-# https://github.com/drone-plugins/drone-hugo/issues/38
-    - apk add gcompat
     - /bin/drone-hugo
   when:
     branch: staging
