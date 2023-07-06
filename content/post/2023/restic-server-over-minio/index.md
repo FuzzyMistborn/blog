@@ -2,7 +2,7 @@
 title: "Bye Bye Minio, Hello Restic Rest Server!"
 author: "FuzzyMistborn"
 date: 2023-07-06T11:01:00Z
-slug: restic-server-over-minion
+slug: restic-server-over-minio
 categories:
   - "Linux"
 tags:
