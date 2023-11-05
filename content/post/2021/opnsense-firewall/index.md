@@ -73,7 +73,7 @@ binary_sensor:
     resource: http://OPNSENSE_URL/api/firewall/filter/getRule/UUID_OF_AUTOMATION_RULE
     username: !secret opnsense_user
     password: !secret opnsense_key
-    value_template: "{{ value_json.rule.enabled }}"
+    value_template: "{{ value_json.rule.enabled == '0' }}"
  ```
 
 Since you need two commands to enable/disable the firewall rule (one to toggle the rule on/off, the other to actually apply the change), I found it easier to create a simple script to call both commands.
@@ -108,3 +108,4 @@ And here's what the final result looks like:
 ## Conclusion
 There you have it.  You can now automate enabling or disabling firewall rules in OPNsense as needed.  There are probably other ways to do this, such as with a VPN, but this works for me.  Hope someone finds it helpful!
 
+> **NOTE**: I updated this post in November 2023.  Opnsense seems to have altered how rules are handled and I noticed that when the rule was "enabled" I was not able to get through the firewall, but if it was disabled I could get through.  I swapped my setup around and everything is working.  Not sure why or when the changed happened.
