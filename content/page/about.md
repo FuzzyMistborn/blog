@@ -17,7 +17,7 @@ I spend most of my day sitting in front of a computer or with a phone in my hand
 Here are the best places to reach me on the interwebs:
 
 - Reddit: [FuzzyMistborn](https://reddit.com/u/FuzzyMistborn/)
-- Discord: [FuzzyMistborn#3044](https://discord.com/)
+- Discord: [@FuzzyMistborn](https://discord.com/)
 - Github: [FuzzyMistborn](https://github.com/FuzzyMistborn/)
 
 Want to say thanks? [Buy me a beer!](https://www.buymeacoffee.com/fuzzymistborn)
