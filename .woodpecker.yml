@@ -1,20 +1,12 @@
-kind: pipeline
-type: docker
-name: default
-
 steps:
 - name: Build Site (main)
-  image: fuzzymistborn/hugo
-  settings:
-    hugo_version: 0.115.1
-    extended: true
-    config: config.yaml
-    validate: false
+  image: hugomods/hugo:exts-0.126.3
   commands:
     - git submodule update --init --recursive
-    - /bin/drone-hugo
+    - hugo
   when:
     branch: main
+    event: {}
 
 - name: Deploy to VPS (main)
   image: appleboy/drone-scp
@@ -31,17 +23,13 @@ steps:
       from_secret: ssh_port
   when:
     branch: main
+    event: {}
 
 - name: Build Site (staging)
-  image: fuzzymistborn/hugo
-  settings:
-    hugo_version: 0.115.1
-    extended: true
-    config: config.yaml
-    validate: false
+  image: hugomods/hugo:exts-0.126.3
   commands:
     - git submodule update --init --recursive
-    - /bin/drone-hugo
+    - hugo
   when:
     branch: staging
 
@@ -60,6 +48,7 @@ steps:
       from_secret: ssh_port
   when:
     branch: staging
+    event: {}
 
 - name: Send TG Notification
   image: appleboy/drone-telegram
