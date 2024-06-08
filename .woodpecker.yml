@@ -6,7 +6,7 @@ steps:
     - hugo
   when:
     branch: main
-    event: {}
+    event: [ push, manual ]
 
 - name: Deploy to VPS (main)
   image: appleboy/drone-scp
@@ -23,7 +23,7 @@ steps:
       from_secret: ssh_port
   when:
     branch: main
-    event: {}
+    event: [ push, manual ]
 
 - name: Build Site (staging)
   image: hugomods/hugo:exts-0.126.3
@@ -48,7 +48,7 @@ steps:
       from_secret: ssh_port
   when:
     branch: staging
-    event: {}
+    event: [ push, manual ]
 
 - name: Send TG Notification
   image: appleboy/drone-telegram
@@ -61,3 +61,4 @@ steps:
     message: "{{#success build.status}}✅  Build for `{{repo.name}}` was *successful*!{{else}}❌  Build for `{{repo.name}}` has *FAILED*!{{/success}} \n🌐  [Output]({{build.link}})\n📝  Commit: {{ commit.message }}"
   when:
     status: [ success, failure ]
+    event: [ push, manual ]
