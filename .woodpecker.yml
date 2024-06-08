@@ -32,6 +32,7 @@ steps:
     - hugo
   when:
     branch: staging
+    event: [ push, manual ]
 
 - name: Deploy to VPS (staging)
   image: appleboy/drone-scp
