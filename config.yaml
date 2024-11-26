@@ -1,7 +1,6 @@
 baseurl: https://blog.fuzzymistborn.com
 languageCode: en-us
 theme: hugo-theme-stack
-paginate: 10
 title: Random Musings
 
 # Change it to your Disqus shortname before using
@@ -9,6 +8,11 @@ title: Random Musings
 
 # GA Tracking ID
 #googleAnalytics:
+
+pagination:
+  disableAliases: false
+  pagerSize: 10
+  path: page
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl
