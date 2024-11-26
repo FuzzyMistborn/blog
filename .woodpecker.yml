@@ -1,6 +1,6 @@
 steps:
 - name: Build Site (main)
-  image: hugomods/hugo:exts-0.139.2
+  image: hugomods/hugo:exts-0.138.0
   commands:
     - git submodule update --init --recursive
     - hugo
