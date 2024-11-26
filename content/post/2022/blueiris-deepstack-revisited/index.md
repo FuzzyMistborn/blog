@@ -28,36 +28,14 @@ As mentioned above, I'm moving into a new house (literally, it's a new construct
 
 Here's my hardware list:
 
-<table class="pcpp-part-list">
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Item</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="pcpp-part-list-type">CPU</td>
-      <td class="pcpp-part-list-item"><a href="https://pcpartpicker.com/product/X8snTW/intel-core-i5-10400-29-ghz-6-core-processor-bx8070110400">Intel Core i5-10400 2.9 GHz 6-Core Processor</a></td>
-    </tr>
-    <tr>
-      <td class="pcpp-part-list-type">Motherboard</td>
-      <td class="pcpp-part-list-item"><a href="https://pcpartpicker.com/product/y8rRsY/msi-b560m-pro-vdh-micro-atx-lga1200-motherboard-b560m-pro-vdh">MSI B560M PRO-VDH Micro ATX LGA1200 Motherboard</a></td>
-    </tr>
-    <tr>
-      <td class="pcpp-part-list-type">Memory</td>
-      <td class="pcpp-part-list-item"><a href="https://pcpartpicker.com/product/2Bnypg/team-t-force-vulcan-z-16-gb-2-x-8-gb-ddr4-3200-cl16-memory-tlzgd416g3200hc16fdc01">TEAMGROUP T-FORCE VULCAN Z 16 GB (2 x 8 GB) DDR4-3200 CL16 Memory</a></td>
-    </tr>
-    <tr>
-      <td class="pcpp-part-list-type">Case</td>
-      <td class="pcpp-part-list-item"><a href="https://pcpartpicker.com/product/7TBG3C/fractal-design-meshify-2-compact-atx-mid-tower-case-fd-c-mes2c-01">Fractal Design Meshify 2 Compact ATX Mid Tower Case</a></td>
-    </tr>
-    <tr>
-      <td class="pcpp-part-list-type">Power Supply</td>
-      <td class="pcpp-part-list-item"><a href="https://pcpartpicker.com/product/49VG3C/evga-supernova-gt-650-w-80-gold-certified-fully-modular-atx-power-supply-220-gt-0650-y1">EVGA SuperNOVA GT 650 W 80+ Gold Certified Fully Modular ATX Power Supply</a></td>
-    </tr>
-  </tbody>
-</table>
+
+| Type         | Item                                                                                                                                                                                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| CPU          | [Intel Core i5-10400 2.9 GHz 6-Core Processor](https://pcpartpicker.com/product/X8snTW/intel-core-i5-10400-29-ghz-6-core-processor-bx8070110400)                                                             |
+| Motherboard  | [MSI B560M PRO-VDH Micro ATX LGA1200 Motherboard](https://pcpartpicker.com/product/y8rRsY/msi-b560m-pro-vdh-micro-atx-lga1200-motherboard-b560m-pro-vdh)                                                     |
+| Memory       | [TEAMGROUP T-FORCE VULCAN Z 16 GB (2 x 8 GB) DDR4-3200 CL16 Memory](https://pcpartpicker.com/product/2Bnypg/team-t-force-vulcan-z-16-gb-2-x-8-gb-ddr4-3200-cl16-memory-tlzgd416g3200hc16fdc01)               |
+| Case         | [Fractal Design Meshify 2 Compact ATX Mid Tower Case](https://pcpartpicker.com/product/7TBG3C/fractal-design-meshify-2-compact-atx-mid-tower-case-fd-c-mes2c-01)                                             |
+| Power Supply | [EVGA SuperNOVA GT 650 W 80+ Gold Certified Fully Modular ATX Power Supply](https://pcpartpicker.com/product/49VG3C/evga-supernova-gt-650-w-80-gold-certified-fully-modular-atx-power-supply-220-gt-0650-y1) |
 
 On a side note, I'm a huge fan of Fractal Design cases (literally every single case I've ever bought is a Fractal) and the Meshify 2 Compact doesn't disappoint.  Easy to build in, looks great.
 
