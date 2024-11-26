@@ -2,7 +2,8 @@ steps:
 - name: Build Site (main)
   image: hugomods/hugo:exts-0.138.0
   commands:
-    - git submodule update --init --recursive
+#    - git submodule update --init --recursive
+    - git submodule update --recursive
     - hugo
   when:
     branch: main
