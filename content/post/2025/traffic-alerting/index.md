@@ -208,6 +208,6 @@ After all that work, you finally should have a snapshot of whatever map you chos
 
 You can get the "via" part if you use the [Waze Travel Time integration](https://www.home-assistant.io/integrations/waze_travel_time/) though I've found it to be slow to update.  Here's an example of how it looks in Signal:
 
-![[notification.png]]
+![Signal Notification](notification.png)
 
 Again, over the years I've found this to be invaluable for knowing both how long my commute is going to take and if there's going to be traffic and I need to find a different way home.  I hope you find it useful as well!
