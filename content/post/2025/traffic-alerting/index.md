@@ -189,7 +189,7 @@ browser.screenshot("/home/fuzzy/hass/tmp/waze", full=True, unique_file=False)
   
 browser.quit()
 ```
-FY the `xpath` bit clears out the Waze banner at the bottom about installing the Android/iOS app.
+FYI the `xpath` bit clears out the Waze banner at the bottom about installing the Android/iOS app.
 
 You'll want to adjust the visit URL as well as the Selenium IP address and screenshot save path.  Note you do not need to put a file extension for the screenshot path.  In my example, it will save the screenshot as `/home/fuzzy/hass/tmp/commute.png` or `waze.png`.  I'd suggest putting it in a subdirectory in your HomeAssistant folder to make the next part easier.  Make the .py file executable: `chmod +x YOURFILE.py`.
 
