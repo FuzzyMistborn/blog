@@ -19,7 +19,7 @@ Continuing on [my love/hate relationship with Drone](https://blog.fuzzymistborn.
 
 The positive way to look at that is that there hasn't been anything that's particularly broken about Drone in that time.  But I think it's representative of a larger issue, namely that they no longer support the open source version.  There's also this:
 
-![[Drone_Limit_1.png]]
+![Drone Limits](Drone_Limit_1.png)
 
 Whenever I logged into Drone, this banner was stuck on the bottom.  No way to hide or remove.  And more annoyingly, IT BLOCKS PEOPLE FROM SEEING THINGS IN THE UI!  Plus, I'm self-hosting Drone, which should be free (and as best I could tell, there was no limit on what I could do, beyond the banner).  So while not itself a dealbreaker, I was reminded every time I logged in that Drone is basically dead for self hosters.
 
@@ -30,13 +30,13 @@ Now why not GItea Runner you may be asking?  I looked hard at it, but what ultim
 ## Goodbye Synology
 In hardware upgrades, I realized that my Synology NAS was...well....old.  It's a DSM 713+, meaning it's from 2013.  The Linux kernel on the thing was 3.10, I'm pretty sure it wasn't getting updates anymore....it was time.  I recently sunset my BlueIris box in favor of going all in on Frigate (which has been amazing and it looks like the next release in 0.14 is going to make some major UI improvements I'm eagerly awaiting), so I realized I had a spare i5-10400 lying around doing nothing.  I decided to use this as the basis for a new NAS box.  And I decided I wanted to make it rack-mounted.  I ultimately landed on this [RackChoice 2U server chassis.](https://www.amazon.com/gp/product/B0CH3JXKZF/)  Overall, I'm going to say I'm impressed with it.  The build was a little tight in some spots and cable management was....well...basically non-existent.  I largely just tried to make sure the airflow wasn't too obstructed.  
 
-![[rackmount-build-1.png]]
+![Rack Build](rackmount-build-1.png)
 
 I also had to deal with a dead power supply which was annoying (the BeQuiet in the above picture, swapped it for a Corsair RM750 which works just fine).  The only other hardware change I made was I swapped the 4 front mounted fans for some Noctua NF-R8's.  The included fans were probably *fine*, but I've always loved Noctua fans for their performance and silence.  And they weren't too expensive.
 
 I also dealt with some *tight* clearance in the back of my rack (19" wall mounted).  I accidentally squeezed the box's networking cable (still works just fine but...it's on the "to replace" list).
 
-![[rackmount-build-2.png]]
+![Rack](rackmount-build-2.png)
 
 Software wise, I went with Proxmox and created a cluster with my other rig, so now I can move LXCs/VMs around as needed for maintenance if needed.  Plus, I have a ton more horsepower at my disposal.  I've got 3 disks in the 2U chassis (with room for 2 more if needed, which I probably won't), running with MergerFS and Snapraid to create a main volume of about 12TB.  Plenty for some on-site backups/redundancies.
 
@@ -47,7 +47,7 @@ The last thing I want to mention is a very handy piece of software if you're run
 
 I've cobbled together a [somewhat basic install role via Ansible](https://github.com/FuzzyMistborn/infra/tree/main/roles/install/lnxlink) that also allows me to dynamically set the configuration for each computer.  And I have it running on several of my LXC's (as well as the main Proxmox hosts) reporting data back to HomeAssistant that then gets nicely displayed.
 
-![[homeassistant-dash.png]]
+![HA Dash](homeassistant-dash.png)
 
 On top of my Telegraf-Influx-HomeAssistant setup, I was running an app called [Webhook](https://github.com/adnanh/webhook/) that allowed me to execute scripts/commands on some of my hosts.  Things like rebooting the computer, running a bash script to display traffic information for my commute, starting/stopping a VM, etc.  LNXLink has a Bash module that lets you define commands that can be executed with a push of a button.  **Obviously, be careful doing this since the commands can be executed via MQTT**.  But it removed yet another piece of software for me to keep up/manage.  And the icing on the cake is that the developer is super responsive and willing to add new features.  Really awesome piece of software.
 
