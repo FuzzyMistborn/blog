@@ -28,7 +28,6 @@ As mentioned above, I'm moving into a new house (literally, it's a new construct
 
 Here's my hardware list:
 
-
 | Type         | Item                                                                                                                                                                                                         |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | CPU          | [Intel Core i5-10400 2.9 GHz 6-Core Processor](https://pcpartpicker.com/product/X8snTW/intel-core-i5-10400-29-ghz-6-core-processor-bx8070110400)                                                             |
