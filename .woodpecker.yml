@@ -1,6 +1,6 @@
 steps:
 - name: Build Site (main)
-  image: hugomods/hugo:exts-0.148.1
+  image: hugomods/hugo:exts-0.152.2
   commands:
     - git submodule update --init --recursive
     - hugo
@@ -26,7 +26,7 @@ steps:
     event: [ push, manual ]
 
 - name: Build Site (staging)
-  image: hugomods/hugo:exts-0.148.1
+  image: hugomods/hugo:exts-0.152.2
   commands:
     - git submodule update --init --recursive
     - hugo
