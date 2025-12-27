@@ -51,7 +51,7 @@ steps:
     branch: staging
     event: [ push, manual ]
 
-- name: Send TG Notification
+- name: Send TG Notification (Success)
   image: appleboy/drone-telegram
   settings:
     token:
@@ -59,7 +59,20 @@ steps:
     to:
       from_secret: tg_id
     format: markdown
-    message: "{{#success pipeline.status}}✅  Build for `{{repo.name}}` was *successful*!{{else}}❌  Build for `{{repo.name}}` has *FAILED*!{{/success}} \n🌐  [Output]({{build.link}})\n📝  Commit: {{ commit.message }}"
+    message: "✅  Build for `{{repo.name}}` was *successful*! \n🌐  [Output]({{build.link}})\n📝  Commit: {{ commit.message }}"
   when:
-    status: [ success, failure ]
+    status: [ success ]
+    event: [ push, manual ]
+
+- name: Send TG Notification (Failure)
+  image: appleboy/drone-telegram
+  settings:
+    token:
+      from_secret: tg_token
+    to:
+      from_secret: tg_id
+    format: markdown
+    message: "❌  Build for `{{repo.name}}` has *FAILED*! \n🌐  [Output]({{build.link}})\n📝  Commit: {{ commit.message }}"
+  when:
+    status: [ failure ]
     event: [ push, manual ]
