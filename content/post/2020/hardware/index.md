@@ -67,7 +67,7 @@ For a lock, I use the [Schlage Connect](https://www.amazon.com/Schlage-Connect-T
 For the garage, I use the [GoControl/Linear](https://smile.amazon.com/GoControl-Linear-GD00Z-4-Z-Wave-Controller/dp/B00M75TEIU) Zwave.  Again, I love it.  It works well, haven't had any issues with it at all.  Can't really say much more than that.  There are some other options out there that aren't ZWave based but if you want locally controlled and have a ZWave network, I'd strongly encourage you to get the GoControl.  And please please please please please STAY THE HELL AWAY FROM MyQ!!!
 
 # Zigbee
-![](zigbee.png)
+{{< figure src="zigbee.png" width="300" >}}
 
 So this is a recent addition to my smart home.  Zigbee is another protocol that is similar in some ways to ZWave in that it's 1) locally controlled and 2) you need a hub.  The major differences are that Zigbee is (I believe) an open standard (at least one without licensing fees) so it's easier and cheaper to make products, and more importantly it uses the same spectrum as 2.4 GHz WiFi.  Because it uses the same spectrum it's possible that you'll run into interference.  If you want to learn more/read how to avoid interference, go read [this article](https://support.metageek.com/hc/en-us/articles/203845040-ZigBee-and-WiFi-Coexistence).
 
