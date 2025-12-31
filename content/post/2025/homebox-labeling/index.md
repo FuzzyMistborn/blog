@@ -59,9 +59,9 @@ Key things to note:
 
 Once you spin up HomeBox and create a user/your first item, you'll now have the option to "Print from Browser".  If you click it you'll see a "Print on Server" button.  Right now if you click it, all it will do is create a `label.png` file in the directory you mounted in `/labels`.  Let's fix that so it does more now.
 
-![[print-from-browser.png]]
+![Print from Browser Button](print-from-browser.png)
 
-![[print-on-server.png]]
+![Print On Server Button](print-on-server.png)
 
 The next step is to create a bash script that uses `inotify` to monitor the `/labels` directory for a new PNG file.  When it detects a new PNG file in the directory, it fires off the image to MQTT.  We'll use this to get the image into HomeAssistant pretty seamlessly.
 
