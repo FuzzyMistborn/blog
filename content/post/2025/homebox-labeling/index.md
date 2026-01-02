@@ -39,7 +39,7 @@ To start, here is my Docker Compose snippet to setup HomeBox:
       - HBOX_LOG_LEVEL=info
       - HBOX_LOG_FORMAT=text
       - HBOX_WEB_MAX_UPLOAD_SIZE=10
-      - HBOX_LABEL_MAKER_PRINT_COMMAND=cp {{.FileName}} /label/label.png
+      - HBOX_LABEL_MAKER_PRINT_COMMAND=cp {{.FileName}} /labels/label.png
       - HBOX_LABEL_MAKER_PADDING=5
       - HBOX_LABEL_MAKER_WIDTH=350
       - HBOX_LABEL_MAKER_HEIGHT=120
