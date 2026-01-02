@@ -146,7 +146,7 @@ target:
 
 A few things.
 1) You can play with `print_line_batch_size`.  /u/flybrys used 32.  From my own trial and error I've settled on 10.  My understanding is it controls print speed, and I found 10 to be fine.
-2) The Niimbot requires a URL in order to print and can't print a local file.  Hence why we set up an MQTT camera.  Using the template pulls the necessary camera API token so allow printing. 
+2) The Niimbot requires a URL in order to print and can't print a local file.  Hence why we set up an MQTT camera.  Using the template pulls the necessary camera API token to allow printing. 
 3) You can change `preview` to `true` if you want to test without physically printing anything.  You can see what would have been printed if you look at the `Last Label Made` entity.
 4) To find the device_id, go to the Actions screen and use the UI to select the Niimbot device and then switch back to YAML mode.
 
