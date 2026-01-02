@@ -54,7 +54,7 @@ To start, here is my Docker Compose snippet to setup HomeBox:
 Key things to note:
 1) Make sure you update the image tag to whatever the latest version is!
 2) The `HBOX_LABEL_MAKER_PRINT_COMMAND` is necessary to enable the "Print on Server" button.  All we need is a simple `cp` command to copy the QR code label out of the container to the mounted directory `/labels`.  `{{.FileName}}` is straight from the HomeBox docs.
-3) The rest of the padding/width/height specs come straight from /u/u/flybrys's post.
+3) The rest of the padding/width/height specs come straight from /u/flybrys's post.
 ## To HomeAssistant!
 
 Once you spin up HomeBox and create a user/your first item, you'll now have the option to "Print from Browser".  If you click it you'll see a "Print on Server" button.  Right now if you click it, all it will do is create a `label.png` file in the directory you mounted in `/labels`.  Let's fix that so it does more now.
