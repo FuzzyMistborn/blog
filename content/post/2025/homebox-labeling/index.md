@@ -20,6 +20,8 @@ tags:
 draft: false
 ---
 Yes, it's the end of another year.  And while I could look back and reflect on the year, I'm instead looking forward to next year and some things I want to accomplish.  I'm not going to necessarily call them "resolutions" as I kinda hate that idea, but I would like to keep better track of all the stuff in my house.  Things like how many of a specific smart switch I have, do I have any spare SSDs, when did I buy that TV for warranty purposes.  All that info would be helpful to have in any easily accessible place.
+
+> Update 1/10/2026: Reddit user /u/slurdge made some improvements to the QR code output.  You can read more [here](https://www.reddit.com/r/selfhosted/comments/1q6t2cx/comment/nyo4x6h/).  Their tweaks to the labels have been incorporated below.  You can also follow their guide to add MQTT to the container and avoid the need for scripts.
 ## Homebox Setup
 
 I will admit that I have not spent much time setting up [HomeBox](https://github.com/sysadminsmedia/homebox) yet, but in short it's software to help you take inventory of and organize things in your house.  It's pretty feature rich, with lots of customization and data that can be stored.  Essentially it does exactly what it says on the box.  It's something I've known about but never really played around with.
@@ -41,8 +43,10 @@ To start, here is my Docker Compose snippet to setup HomeBox:
       - HBOX_WEB_MAX_UPLOAD_SIZE=10
       - HBOX_LABEL_MAKER_PRINT_COMMAND=cp {{.FileName}} /labels/label.png
       - HBOX_LABEL_MAKER_PADDING=5
-      - HBOX_LABEL_MAKER_WIDTH=350
-      - HBOX_LABEL_MAKER_HEIGHT=120
+      - HBOX_LABEL_MAKER_MARGIN=5
+      - HBOX_LABEL_MAKER_WIDTH=320
+      - HBOX_LABEL_MAKER_HEIGHT=96
+      - HBOX_LABEL_MAKER_FONT_SIZE=24
       - HBOX_OPTIONS_ALLOW_ANALYTICS=false
     volumes:
       - "{{ appdata_path }}/homebox/data:/data/"
@@ -129,12 +133,12 @@ data:
       url: >-
         http://HA_IP:HA_PORT/{{ state_attr('camera.YOUR_CAMERA_NAME',
         'entity_picture') }}
-      x: -10
-      "y": 10
-      xsize: 260
-      ysize: 130
-  width: 240
-  height: 120
+      x: 0
+      "y": 0
+      xsize: 320
+      ysize: 96
+  width: 320
+  height: 96
   rotate: 90
   print_line_batch_size: 10
   wait_between_print_lines: 0.01
