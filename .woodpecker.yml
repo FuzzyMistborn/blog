@@ -5,8 +5,8 @@ steps:
     - git submodule update --init --recursive
     - hugo
   when:
-    branch: main
-    event: [ push, manual ]
+    - branch: main
+      event: [push, manual]
 
 - name: Deploy to VPS (main)
   image: appleboy/drone-scp
@@ -22,8 +22,8 @@ steps:
     port:
       from_secret: ssh_port
   when:
-    branch: main
-    event: [ push, manual ]
+    - branch: main
+      event: [push, manual]
 
 - name: Build Site (staging)
   image: hugomods/hugo:exts-0.153.3
@@ -31,8 +31,8 @@ steps:
     - git submodule update --init --recursive
     - hugo
   when:
-    branch: staging
-    event: [ push, manual ]
+    - branch: staging
+      event: [push, manual]
 
 - name: Deploy to VPS (staging)
   image: appleboy/drone-scp
@@ -48,10 +48,10 @@ steps:
     port:
       from_secret: ssh_port
   when:
-    branch: staging
-    event: [ push, manual ]
+    - branch: staging
+      event: [push, manual]
 
-- name: Send TG Notification (Success)
+- name: Notify Success
   image: appleboy/drone-telegram
   settings:
     token:
@@ -59,12 +59,12 @@ steps:
     to:
       from_secret: tg_id
     format: markdown
-    message: "✅  Build for `{{repo.name}}` was *successful*! \n🌐  [Output]({{build.link}})\n📝  Commit: {{ commit.message }}"
+    message: "✅  Build for `${CI_REPO_NAME}` was *successful*!\n🌐  [Output](${CI_PIPELINE_URL})\n📝  Commit: ${CI_COMMIT_MESSAGE}"
   when:
-    status: [ success ]
-    event: [ push, manual ]
+    - event: [push, manual]
+      status: [success]
 
-- name: Send TG Notification (Failure)
+- name: Notify Failure
   image: appleboy/drone-telegram
   settings:
     token:
@@ -72,7 +72,7 @@ steps:
     to:
       from_secret: tg_id
     format: markdown
-    message: "❌  Build for `{{repo.name}}` has *FAILED*! \n🌐  [Output]({{build.link}})\n📝  Commit: {{ commit.message }}"
+    message: "❌  Build for `${CI_REPO_NAME}` has *FAILED*!\n🌐  [Output](${CI_PIPELINE_URL})\n📝  Commit: ${CI_COMMIT_MESSAGE}"
   when:
-    status: [ failure ]
-    event: [ push, manual ]
+    - event: [push, manual]
+      status: [failure]
