@@ -68,6 +68,8 @@ I'm going to provide the relevant Caddyfile bits now, but scroll down if you wan
 
 Here's the top part of my Caddyfile (in the [global options block](https://caddyserver.com/docs/caddyfile/options)):
 
+> Note: Caddy-Security introduced a [breaking change](https://github.com/greenpau/caddy-security/issues/455#issuecomment-3987143294) in v1.136, released March 1, 2026.  The fix is included below, but in short you need to add `trust login redirect uri domain suffix example.com path prefix /` to the authentication portal.
+
 ```caddyfile
 {
     order authenticate before respond
@@ -89,6 +91,7 @@ Here's the top part of my Caddyfile (in the [global options block](https://caddy
 		authentication portal pocket-id {
 			crypto default token lifetime 86400
 			enable identity provider pocket-id
+			trust login redirect uri domain suffix example.com path prefix /
 			transform user {
 				match realm pocket-id
 				action add role user
